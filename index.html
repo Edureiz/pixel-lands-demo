@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Lands of Magic - Official Launch</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Nostalgic Pixels -->
+    <!-- Application Structure Plan: A single-page, vertical scrolling landing page. It starts with a hero section for the main announcement, followed by an introduction. The core is an interactive carousel displaying each land (image, name, description, and price). This is followed by a section highlighting key features and a final call-to-action footer. This narrative flow is intuitive and engaging for a product launch. -->
+    <!-- Visualization & Content Choices: The main content is the five lands. Goal: Showcase and detail each. Method: An interactive carousel with image, name, description, and price. Interaction: Carousel navigation (arrows, dots) updates the displayed land. No dynamic content generation (LLM) is included in this static version. No quantitative data exists, so no charts are needed. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1a1a2e;
+        }
+        .font-pixel {
+            font-family: 'Press Start 2P', cursive;
+        }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5), 0 0 12px rgba(226, 85, 255, 0.5);
+        }
+        .land-image-container {
+            border: 8px solid #16213e;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            background-color: #0f3460;
+        }
+        .carousel-button {
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+        .carousel-button:active {
+            transform: scale(0.95);
+        }
+        .indicator-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #4a5568;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .indicator-dot.active {
+            background-color: #cbd5e0;
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body class="text-gray-200">
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+        <header class="text-center py-16 md:py-24">
+            <h1 class="font-pixel text-3xl md:text-5xl lg:text-6xl text-white text-glow mb-4">Discover New Worlds!</h1>
+            <p class="font-pixel text-lg md:text-2xl text-yellow-300">Pixel Lands of Magic</p>
+            <p class="mt-2 text-base md:text-lg text-gray-400">Official Launch</p>
+        </header>
+
+        <main>
+            <section id="intro" class="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+                <h2 class="font-pixel text-2xl md:text-3xl text-white mb-6">A New Adventure Awaits You</h2>
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    Get ready for an unparalleled journey with our 5 new and incredible Pixel Lands! Each one is a portal to a universe of possibilities, crafted with the nostalgic charm of pixel art and the magic you love. Explore, discover, and let your imagination soar.
+                </p>
+            </section>
+
+            <section id="explorer" class="mb-16 md:mb-24">
+                <div class="text-center mb-10">
+                    <h2 class="font-pixel text-2xl md:text-3xl text-white mb-4">Explore the Lands</h2>
+                    <p class="text-gray-400">Slide to discover each unique world.</p>
+                </div>
+                
+                <div class="relative max-w-4xl mx-auto land-image-container rounded-lg p-4">
+                    <figure>
+                        <img id="land-image" src="" alt="Selected Pixel Land Image" class="w-full h-auto rounded-md object-cover">
+                        <figcaption id="land-caption" class="font-pixel text-center text-xl text-yellow-400 mt-4"></figcaption>
+                        <p id="land-price" class="font-pixel text-center text-lg text-green-400 mt-2"></p>
+                    </figure>
+                    <p id="land-description" class="text-center text-gray-300 mt-4 px-4 leading-relaxed"></p>
+
+                    <!-- Carousel Navigation -->
+                    <button id="prev-land" class="carousel-button absolute left-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full text-2xl hover:bg-opacity-75">‹</button>
+                    <button id="next-land" class="carousel-button absolute right-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full text-2xl hover:bg-opacity-75">›</button>
+
+                    <!-- Carousel Indicators -->
+                    <div id="carousel-indicators" class="flex justify-center mt-4 gap-2">
+                    </div>
+                </div>
+            </section>
+
+            <section id="features" class="py-16 md:py-24 bg-black bg-opacity-20 rounded-lg">
+                <div class="text-center mb-12">
+                     <h2 class="font-pixel text-2xl md:text-3xl text-white">Why You'll Love It?</h2>
+                </div>
+                <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+                    <div class="p-6">
+                        <span class="text-5xl mb-4 inline-block">✨</span>
+                        <h3 class="font-pixel text-xl text-white mb-2">Stunning Visuals</h3>
+                        <p class="text-gray-400">Detailed pixel art that evokes nostalgia and beauty, creating rich and vibrant worlds.</p>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-5xl mb-4 inline-block">🗺️</span>
+                        <h3 class="font-pixel text-xl text-white mb-2">Infinite Adventures</h3>
+                        <p class="text-gray-400">Each land offers a unique setting for your stories, battles, and explorations.</p>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-5xl mb-4 inline-block">💎</span>
+                        <h3 class="font-pixel text-xl text-white mb-2">Collectible</h3>
+                        <p class="text-gray-400">Perfect for fantasy and pixel art fans, each land is a gem for your collection.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center py-16">
+            <h2 class="font-pixel text-2xl text-white mb-4">Stay Tuned!</h2>
+            <p class="text-gray-400">More magic worlds and news coming soon.</p>
+            <p class="text-sm text-gray-600 mt-8">&copy; 2025 Pixel Worlds Inc. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const landsData = [
+                {
+                    name: 'Pixel Forest',
+                    description: 'Tall, dark trees, with a mystical path illuminated by a soft green light.',
+                    imageUrl: 'https://content.googleapis.com/v1/files/uploaded:Pixel%20Forest.jpg-58019501-9ed9-44d4-817b-ea4490483cf2?alt=media',
+                    price: '$2',
+                    color: '#228B22',
+                    glow: '#39FF14'
+                },
+                {
+                    name: 'Pixel Island',
+                    description: 'A paradisiacal beach with golden sand, swaying palm trees, and crystal clear blue waters.',
+                    imageUrl: 'https://content.googleapis.com/v1/files/uploaded:Pixel%20Island.jpg-8da10bf8-8637-444d-be1a-020d94a23c43?alt=media',
+                    price: '$2',
+                    color: '#87CEEB',
+                    glow: '#00FFFF'
+                },
+                {
+                    name: 'Pixel Mountain',
+                    description: 'An imposing volcano with glowing lava rivers and a menacing reddish sky.',
+                    imageUrl: 'https://content.googleapis.com/v1/files/uploaded:Pixel%20Mountain.jpg-b9bccae0-df3f-43f4-82ce-1a6e4869dad3?alt=media',
+                    price: '$2',
+                    color: '#FF4500',
+                    glow: '#FF7F50'
+                },
+                {
+                    name: 'Pixel Plains',
+                    description: 'Vast open fields filled with colorful wildflowers under a clear and peaceful blue sky.',
+                    imageUrl: 'https://content.googleapis.com/v1/files/uploaded:Pixel%20Plains.jpg-09b8c38b-c1eb-43b2-9b4b-f05c680513c3?alt=media',
+                    price: '$2',
+                    color: '#90EE90',
+                    glow: '#ADFF2F'
+                },
+                {
+                    name: 'Pixel Swamp',
+                    description: 'A mysterious and foggy swamp, with gnarled trees and a full moon in the night sky.',
+                    imageUrl: 'https://content.googleapis.com/v1/files/uploaded:Pixel%20Swamp.jpg-8b502b12-6831-4a80-b017-f33ca7194fcc?alt=media',
+                    price: '$2',
+                    color: '#483D8B',
+                    glow: '#9370DB'
+                }
+            ];
+
+            const landImage = document.getElementById('land-image');
+            const landCaption = document.getElementById('land-caption');
+            const landDescription = document.getElementById('land-description');
+            const landPrice = document.getElementById('land-price');
+            const prevLandBtn = document.getElementById('prev-land');
+            const nextLandBtn = document.getElementById('next-land');
+            const carouselIndicators = document.getElementById('carousel-indicators');
+
+            let currentLandIndex = 0;
+            let autoPlayInterval;
+
+            function updateLandDisplay(index) {
+                const land = landsData[index];
+                landImage.src = land.imageUrl;
+                landImage.alt = `Image of ${land.name}`;
+                landCaption.textContent = land.name;
+                landDescription.textContent = land.description;
+                landPrice.textContent = `Price: ${land.price}`;
+                
+                // Update indicators
+                carouselIndicators.innerHTML = '';
+                landsData.forEach((_, i) => {
+                    const dot = document.createElement('div');
+                    dot.className = `indicator-dot ${i === index ? 'active' : ''}`;
+                    dot.addEventListener('click', () => {
+                        currentLandIndex = i;
+                        updateLandDisplay(currentLandIndex);
+                        resetAutoPlay();
+                    });
+                    carouselIndicators.appendChild(dot);
+                });
+            }
+
+            function showNextLand() {
+                currentLandIndex = (currentLandIndex + 1) % landsData.length;
+                updateLandDisplay(currentLandIndex);
+            }
+
+            function showPrevLand() {
+                currentLandIndex = (currentLandIndex - 1 + landsData.length) % landsData.length;
+                updateLandDisplay(currentLandIndex);
+            }
+
+            function startAutoPlay() {
+                autoPlayInterval = setInterval(showNextLand, 5000); // Change land every 5 seconds
+            }
+
+            function resetAutoPlay() {
+                clearInterval(autoPlayInterval);
+                startAutoPlay();
+            }
+
+            prevLandBtn.addEventListener('click', () => {
+                showPrevLand();
+                resetAutoPlay();
+            });
+
+            nextLandBtn.addEventListener('click', () => {
+                showNextLand();
+                resetAutoPlay();
+            });
+
+            updateLandDisplay(currentLandIndex);
+            startAutoPlay();
+        });
+    </script>
+</body>
+</html>
