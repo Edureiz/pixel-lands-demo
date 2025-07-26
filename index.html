@@ -164,7 +164,6 @@
             const landImage = document.getElementById('land-image');
             const landCaption = document.getElementById('land-caption');
             const landDescription = document.getElementById('land-description');
-            const landPrice = document.getElementById('land-price');
             const prevLandBtn = document.getElementById('prev-land');
             const nextLandBtn = document.getElementById('next-land');
             const carouselIndicators = document.getElementById('carousel-indicators');
@@ -178,8 +177,7 @@
                 landImage.alt = `Image of ${land.name}`;
                 landCaption.textContent = land.name;
                 landDescription.textContent = land.description;
-                landPrice.textContent = `Price: ${land.price}`;
-                
+                 
                 // Update indicators
                 carouselIndicators.innerHTML = '';
                 landsData.forEach((_, i) => {
